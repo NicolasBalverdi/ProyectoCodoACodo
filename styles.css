@@ -1,0 +1,104 @@
+/*Estilos header*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: rgb(200, 167, 96);
+    color: #fff;
+    padding: 10px 0;
+}
+
+.barra-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu li {
+    font-size: 18px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.menu li a:hover {
+    color: #ff6600;
+}
+
+.carrito a {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.carrito a:hover {
+    background-color: #ff4400;
+}
+
+
+/* Estilos texto*/
+
+.texto {
+    font-family: 'Lobster', cursive;
+}
+
+
+/* Estilos para el footer */
+footer {
+    background-color: rgb(200, 167, 96);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.contacto h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.contacto p {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.contacto a {
+    color: #ff6600;
+    text-decoration: none;
+}
+
+.contacto a:hover {
+    text-decoration: underline;
+}
+
+
+/* Estilo mapa */
+iframe {
+    margin: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
+}
+.centrar-mapa {
+    align-items: center;
+}
