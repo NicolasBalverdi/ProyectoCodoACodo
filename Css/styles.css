@@ -63,6 +63,43 @@ header {
 
 .texto {
     font-family: 'Lobster', cursive;
+    margin: 10px 10px;
+}
+
+/* Estilo del contenido principal*/
+button {
+    background-color: rgb(200, 167, 96);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-shadow: 1px 1px 1px black;
+    padding: 3px 3px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.button-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 50px;
+}
+
+#nosotros {
+    max-width: 95%;
+}
+
+.descripcion {
+    display: flex;
+    justify-content: space-around;
+}
+
+.foto {
+    width: 300px;
+    height: 250px;
+    margin: 5px;
+}
+
+#saludo {
+    text-align: center;
 }
 
 
@@ -95,7 +132,25 @@ footer {
 
 
 /* Estilo mapa */
+.lugar {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    max-width: 460px;
+}
+
+.direccion {
+    font-weight: bold;
+    text-align: center;
+}
+
 iframe {
     margin: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.mapa-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
 }
