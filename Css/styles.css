@@ -70,11 +70,11 @@ header {
 button {
     background-color: rgb(200, 167, 96);
     color: #fff;
-    font-family: Arial, sans-serif;
-    text-shadow: 1px 1px 1px black;
-    padding: 3px 3px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 10px;
     cursor: pointer;
+    border: none;
+    margin: 4px;
 }
 .button-container {
     display: flex; 
@@ -153,4 +153,36 @@ iframe {
     display: flex; 
     justify-content: center; 
     align-items: center; 
+}
+/*Estilos formulario*/
+form {
+    margin: 20px auto;
+    max-width: 500px;
+    background-color: #fff;
+    border: 1px solid #555;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+label {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+input, textarea{
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+input[type="submit"]{
+    background-color: rgb(200, 167, 96);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 10px;
 }
