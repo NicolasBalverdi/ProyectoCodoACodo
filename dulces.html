@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aiken</title>
     <link rel="stylesheet" href="Css/styles.css">
     <link rel="shortcut icon" href="Imagenes/LetraSinFondo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&display=swap">  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&display=swap">
 </head>
+
 <body>
-    
+
     <header>
-    <nav class="barra-navegacion">
-        <div class="logo">
-            <a href="inicio.html"><img src="Imagenes/Logo.jpg" alt="Logo de la tienda"></a>
+        <div class="barra-navegacion">
+            <div class="logo">
+                <a href="inicio.html"><img src="Imagenes/Logo.jpg" alt="Logo de la tienda"></a>
+            </div>
+
+            <input type="checkbox" id="menu-hamburguesa">
+            <label id="menu" for="menu-hamburguesa">
+                <span id="menu-abrir">&#9776;</span>
+                <span id="menu-cerrar">X</span>
+            </label>
+
+            <nav>
+                <ul class="menu">
+                    <li><a href="inicio.html">Inicio</a></li>
+                    <li><a href="nosotros.html"> Nosotros</a></li>
+                    <li><a href="dulces.html">Dulces Artesanales</a></li>
+                    <li><a href="venta.html">Puntos de Venta</a></li>
+                    <li class="carrito"><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
         </div>
-        
-        <ul class="menu">
-            <li><a href="inicio.html">Inicio</a></li>
-            <li><a href="nosotros.html"> Nosotros</a></li>
-            <li><a href="dulces.html">Dulces Artesanales</a></li>
-            <li><a href="venta.html">Puntos de Venta</a></li>
-        </ul>    
-        <div class="carrito">
-            <a href="carrito.html">Carrito</a>
-        </div>
-    </nav>
     </header>
 
     <div class="productos">
@@ -95,4 +103,5 @@
     </footer>
     <script src="Scripts/script.js"></script>
 </body>
+
 </html>

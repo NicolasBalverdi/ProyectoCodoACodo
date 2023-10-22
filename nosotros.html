@@ -13,21 +13,27 @@
 <body>
 
     <header>
-        <nav class="barra-navegacion">
+        <div class="barra-navegacion">
             <div class="logo">
                 <a href="inicio.html"><img src="Imagenes/Logo.jpg" alt="Logo de la tienda"></a>
             </div>
 
-            <ul class="menu">
-                <li><a href="inicio.html">Inicio</a></li>
-                <li><a href="nosotros.html"> Nosotros</a></li>
-                <li><a href="dulces.html">Dulces Artesanales</a></li>
-                <li><a href="venta.html">Puntos de Venta</a></li>
-            </ul>
-            <div class="carrito">
-                <a href="carrito.html">Carrito</a>
-            </div>
-        </nav>
+            <input type="checkbox" id="menu-hamburguesa">
+            <label id="menu" for="menu-hamburguesa">
+                <span id="menu-abrir">&#9776;</span>
+                <span id="menu-cerrar">X</span>
+            </label>
+
+            <nav>
+                <ul class="menu">
+                    <li><a href="inicio.html">Inicio</a></li>
+                    <li><a href="nosotros.html"> Nosotros</a></li>
+                    <li><a href="dulces.html">Dulces Artesanales</a></li>
+                    <li><a href="venta.html">Puntos de Venta</a></li>
+                    <li class="carrito"><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <div class="texto" id="nosotros">
@@ -35,15 +41,16 @@
         <div class="descripcion">
             <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquam cupiditate tempora autem fuga
-                laboriosam vitae nihil nisi facilis voluptatem voluptatum placeat repellat repellendus nemo odio a, eum quia
+                laboriosam vitae nihil nisi facilis voluptatem voluptatum placeat repellat repellendus nemo odio a, eum
+                quia
                 illo?
             </p>
             <img class="foto" src="Imagenes/Portrait_Placeholder.png" alt="Foto del local">
         </div>
 
         <h2>Contactanos</h2>
-
-        <form class="comentario" action="comentario.html" name="formulario" method="get">
+        <!-- Uso la API de formspree para mandar los comentarios a mi e-mail-->
+        <form id="form" class="comentario" action="https://formspree.io/f/mjvqlgoe" name="formulario" method="POST">
             <label for="nombre">Apellido y nombre:</label>
             <input type="text" name="nombre" id="nombre" maxlength="30" placeholder="Nombre">
             <br>
@@ -54,6 +61,26 @@
             <br><br>
             <input type="submit" id="b1" name="btn" value="Enviar">
         </form>
+
+        <script>
+            const $form = document.querySelector('#form')
+            $form.addEventListener('submit', handleSubmit)
+
+            async function handleSubmit(event) {
+                event.preventDefault()
+                const form = new FormData(this)
+                const response = await fetch(this.action, {
+                    method: this.method, body: form,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                if (response.ok) {
+                    this.reset();
+                    alert('Gracias por dejar tu comentario')
+                }
+            }
+        </script>
 
         <br>
         <p id="saludo">¡Gracias por visitarnos y por ser parte de nuestra historia de sabor y alegría!</p>

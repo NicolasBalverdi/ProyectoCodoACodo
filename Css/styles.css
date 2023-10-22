@@ -25,6 +25,10 @@ header {
     height: auto;
 }
 
+#menu, #menu-hamburguesa {
+    display: none;
+}
+
 .menu {
     list-style-type: none;
     display: flex;
@@ -57,7 +61,6 @@ header {
 .carrito a:hover {
     background-color: #ff4400;
 }
-
 
 /* Estilos texto*/
 
@@ -202,7 +205,8 @@ iframe {
 }
 
 .mapa-container {
-    display: flex; 
+    display: flex;
+    flex-direction: column;
     justify-content: center; 
     align-items: center; 
 }
@@ -232,4 +236,107 @@ footer {
 
 .contacto a:hover {
     text-decoration: underline;
+}
+
+/* Estilo pantallas pequeñas*/
+@media only screen and (max-width: 990px) {
+    .barra-navegacion .menu {
+        display: inline;
+    }
+}
+
+@media only screen and (max-width: 989px) {
+    .logo img {
+        max-width: 50%;
+        height: auto;
+    }
+
+    .barra-navegacion {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #menu-hamburguesa:not(:checked) ~ nav {
+        display: none;
+    }
+
+    #menu-hamburguesa:checked ~ nav {
+        display: block;
+    }
+
+    #menu {
+        font-size: 6vw;
+        display: block;
+        text-decoration: none;
+        font-weight: bold;
+        color: #fff;
+        transition: color 0.3s;
+        border-radius: 5px;
+        z-index: 9999;
+    }
+
+    #menu:hover {
+        color: #ff6600;
+        background-color:  rgb(187, 156, 90);
+    }
+    
+    #menu-cerrar {
+        display: none;
+    }
+
+    #menu-hamburguesa:checked ~ label #menu-abrir {
+        display: none;
+    }
+
+    #menu-hamburguesa:checked ~ label #menu-cerrar {
+        display: block;
+    }
+
+    .carrito {
+        padding-top: 1em;
+    }
+
+    .barra-navegacion nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        font-size: 6vw;
+        color: white;
+        background-color: rgb(200, 167, 96);
+        padding-top: 0.5em;
+        padding-right: 1.5em;
+        padding-left: 5px;
+        color: white;
+    }
+
+    .barra-navegacion nav ul a {
+        color: white;
+    }
+
+    .barra-navegacion nav ul, .barra-navegacion nav ul li {
+        display: block;
+        text-align: right;
+        margin-bottom: 20px;
+    }
+
+    .descripcion {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .descripcion img {
+        max-width: 300px;
+        width: auto;
+        height: auto;
+    }
+
+    @media only screen and (max-width: 380px) {
+        .ImagDulce {
+            max-width: 330px;
+            width: auto;
+            height: auto;
+        }
+    }
 }
