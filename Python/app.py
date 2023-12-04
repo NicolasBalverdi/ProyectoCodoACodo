@@ -70,7 +70,7 @@ class Catalogo:
         
         return self.ejecutar_consulta(query, data)
 
-catalogo = Catalogo(host='localhost', user='root', password='Rodrigo2023', database='miapp')
+catalogo = Catalogo(host='localhost', user='root', password='', database='miapp')
 
 @app.teardown_appcontext
 def close_database(error):
