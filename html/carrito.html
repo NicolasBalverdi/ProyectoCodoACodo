@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aiken</title>
-    <link rel="stylesheet" href="Css/styles.css">
-    <link rel="shortcut icon" href="Imagenes/LetraSinFondo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/Css/styles.css">
+    <link rel="shortcut icon" href="/Imagenes/LetraSinFondo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&display=swap">
-    
+    <script src="https://kit.fontawesome.com/e3aa06ca23.js" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
-    
+
     <header>
         <div class="barra-navegacion">
             <div class="logo">
-                <a href="inicio.html"><img src="Imagenes/Logo.jpg" alt="Logo de la tienda"></a>
+                <a href="inicio.html"><img src="/Imagenes/Logo-sinfondo.png" alt="Logo de la tienda"></a>
             </div>
 
             <input type="checkbox" id="menu-hamburguesa">
@@ -29,25 +32,25 @@
                     <li><a href="nosotros.html"> Nosotros</a></li>
                     <li><a href="dulces.html">Dulces Artesanales</a></li>
                     <li><a href="venta.html">Puntos de Venta</a></li>
-                    <li class="carrito"><a href="carrito.html">Carrito</a></li>
+                    <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="mapa-container">
-        <h2>Encontranos en</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46743.4940034702!2d-71.35318758038927!3d-42.926251799346126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x961dac2eceb14205%3A0x39b79550160d992b!2sAiken%20Dulces%20Regionales!5e0!3m2!1ses!2sar!4v1696892818128!5m2!1ses!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-
-
+    <h2 class="texto">Carrito de Compras</h2>
+    <div id="carrito-container"></div>
+    <button onclick="finalizarCompra()">Finalizar Compra</button>
     <footer>
         <div class="contacto">
             <h2>Contacto</h2>
+            <p><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-facebook"></i></a><a href="#""><i class="fa-brands fa-x-twitter"></i></a></p>
             <p>Para cualquier pregunta o consulta, no dudes en ponerte en contacto con nosotros:</p>
             <p>Correo electrónico: <a href="mailto:dulceria_aiken@hotmail.com">dulceria_aiken@hotmail.com</a></p>
             <p>Teléfono: 02945 45-2225</p>
         </div>
     </footer>
+    <script src="/Scripts/script.js"></script>
 </body>
+
 </html>
