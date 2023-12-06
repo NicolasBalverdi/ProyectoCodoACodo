@@ -27,9 +27,9 @@ class Catalogo:
             print(f"Error en la consulta SQL: {err}")
             return False
 
-    def agregar_producto(self, codigo, descripcion, cantidad, precio, proveedor):
+    def agregar_producto(self, codigo, descripcion, cantidad, precio, img):
         query = "INSERT INTO productos (codigo, descripcion, cantidad, precio, proveedor) VALUES (%s, %s, %s, %s, %s);"
-        data = (codigo, descripcion, cantidad, precio, proveedor)
+        data = (codigo, descripcion, cantidad, precio, img)
         
         if self.ejecutar_consulta(query, data):
             return True
@@ -43,9 +43,9 @@ class Catalogo:
         self.cursor.execute(query, data)
         return self.cursor.fetchone()
 
-    def modificar_producto(self, codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nuevo_proveedor):
+    def modificar_producto(self, codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nueva_img):
         query = "UPDATE productos SET descripcion = %s, cantidad = %s, precio = %s, proveedor = %s WHERE codigo = %s;"
-        data = (nueva_descripcion, nueva_cantidad, nuevo_precio, nuevo_proveedor, codigo)
+        data = (nueva_descripcion, nueva_cantidad, nuevo_precio, nueva_img, codigo)
         
         return self.ejecutar_consulta(query, data)
 

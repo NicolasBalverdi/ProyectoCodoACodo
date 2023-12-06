@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estiloadm.css') }}">
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+                <tr>
+                    <td>{{ producto['id'] }}</td>
+                    <td>{{ producto['nombre'] }}</td>
+                    <td>${{ producto['precio'] }}</td>
+                    <td>
+                        <a href="{{ url_for('ver_producto', producto_id=producto['id']) }}">Ver</a>
+                        <a href="{{ url_for('modificar_producto', producto_id=producto['id']) }}">Modificar</a>
+                        <a href="{{ url_for('eliminar_producto', producto_id=producto['id']) }}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('agregar_producto') }}">Agregar nuevo producto</a>
+</body>
+</html>

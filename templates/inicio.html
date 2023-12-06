@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aiken</title>
-    <link rel="stylesheet" href="/Css/estiloinicio.css">
-    <link rel="shortcut icon" href="/Imagenes/LetraSinFondo.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estiloinicio.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/LetraSinFondo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&display=swap">
     <script src="https://kit.fontawesome.com/e3aa06ca23.js" crossorigin="anonymous"></script>
 
@@ -17,7 +17,7 @@
     <header>
         <div class="barra-navegacion">
             <div class="logo">
-                <a href="inicio.html"><img src="/Imagenes/Logo-sinfondo.png" alt="Logo de la tienda"></a>
+                <a href="{{ url_for('inicio') }}"><img src="{{ url_for('static', filename='img/Logo-sinfondo.png') }}" alt="Logo de la tienda"></a>
             </div>
 
             <input type="checkbox" id="menu-hamburguesa">
@@ -28,11 +28,11 @@
 
             <nav>
                 <ul class="menu">
-                    <li><a href="inicio.html">Inicio</a></li>
-                    <li><a href="nosotros.html"> Nosotros</a></li>
-                    <li><a href="dulces.html">Dulces Artesanales</a></li>
-                    <li><a href="venta.html">Puntos de Venta</a></li>
-                    <li><a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
+                    <li><a href="{{ url_for('nosotros') }}"> Nosotros</a></li>
+                    <li><a href="{{ url_for('dulces') }}">Dulces Artesanales</a></li>
+                    <li><a href="{{ url_for('venta') }}">Puntos de Venta</a></li>
+                    <li><a href="{{ url_for('carrito') }}"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
             </nav>
         </div>
@@ -54,7 +54,7 @@
             cada amante de los dulces.
         </div>
         <div class="button-container">
-            <a href="dulces.html"><button>Ver Productos</button></a>
+            <a href="{{ url_for('dulces') }}"><button>Ver Productos</button></a>
         </div>
         <div class="texto">
             Nuestra misión es compartir la alegría y la pasión por los dulces artesanales con el mundo. Ya sea
@@ -66,13 +66,13 @@
             dulces y a experimentar la dulzura de la vida de una manera completamente nueva.
         </div>
         <div class="button-container">
-            <a href="venta.html"><button>Ir a puntos de venta</button></a>
+            <a href="{{ url_for('venta') }}"><button>Ir a puntos de venta</button></a>
         </div>
         <div class="texto">
             ¡Gracias por visitarnos y por ser parte de nuestra historia de sabor y alegría!
         </div>
     </div>
-
+    
 
     <footer>
         <div class="contacto">
@@ -84,5 +84,4 @@
         </div>
     </footer>
 </body>
-
 </html>

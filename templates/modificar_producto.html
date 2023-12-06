@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estiloadm.css') }}">
+</head>
+<body>
+    <h1>Modificar Producto</h1>
+    <form method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ producto['nombre'] }}" required>
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" min="1" value="{{ producto['precio'] }}" required>
+        <label for="imagen">URL de la imagen:</label>
+        <input type="url" id="imagen" name="imagen" value="{{ producto['imagen'] }}" required>
+        <input type="submit" value="Guardar Cambios">
+    </form>
+    <a href="{{ url_for('mostrar_productos') }}">Cancelar</a>
+</body>
+</html>
