@@ -11,6 +11,14 @@ class Catalogo:
                 database=database
             )
             self.cursor = self.conn.cursor(dictionary=True)
+            self.cursor.execute('''
+                CREATE TABLE IF NOT EXISTS productos (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    nombre VARCHAR(255) NOT NULL,
+                    precio FLOAT NOT NULL,
+                    imagen VARCHAR(255) NOT NULL
+                )
+            ''')
         except mysql.connector.Error as err:
             print(f"Error al conectar a la base de datos: {err}")
 

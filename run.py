@@ -41,12 +41,15 @@ def inicio():
 @app.route('/carrito')
 def carrito():
     return render_template('carrito.html')
+
 @app.route('/dulces')
 def dulces():
     return render_template('dulces.html')
+
 @app.route('/nosotros')
 def nosotros():
     return render_template('nosotros.html')
+
 @app.route('/venta')
 def venta():
     return render_template('venta.html')
