@@ -28,7 +28,7 @@ class Catalogo:
             return False
 
     def agregar_producto(self, codigo, descripcion, cantidad, precio, img):
-        query = "INSERT INTO productos (codigo, descripcion, cantidad, precio, proveedor) VALUES (%s, %s, %s, %s, %s);"
+        query = "INSERT INTO productos (codigo, descripcion, cantidad, precio, img) VALUES (%s, %s, %s, %s, %s);"
         data = (codigo, descripcion, cantidad, precio, img)
         
         if self.ejecutar_consulta(query, data):
@@ -38,7 +38,7 @@ class Catalogo:
 
     def consultar_producto(self, codigo):
         query = "SELECT * FROM productos WHERE codigo = %s;"
-        data = (codigo,)
+        data = (codigo)
         
         self.cursor.execute(query, data)
         return self.cursor.fetchone()
@@ -57,6 +57,6 @@ class Catalogo:
 
     def eliminar_producto(self, codigo):
         query = "DELETE FROM productos WHERE codigo = %s;"
-        data = (codigo,)
+        data = (codigo)
         
         return self.ejecutar_consulta(query, data)
