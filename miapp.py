@@ -125,17 +125,37 @@ class Catalogo:
 #--------------------------------------------------------------------
 # Crear una instancia de la clase Catalogo
 
-#catalogo = Catalogo(host='localhost', user='root', password='', database='miapp')
-catalogo = Catalogo(host='arielfsp.mysql.pythonanywhere-services.com', user='arielfsp', password='1234qw12', database='arielfsp$miapp')
+catalogo = Catalogo(host='localhost', user='root', password='', database='miapp')
+#catalogo = Catalogo(host='arielfsp.mysql.pythonanywhere-services.com', user='arielfsp', password='1234qw12', database='arielfsp$miapp')
 
 
-# catalogo.agregar_producto(1, "Televisor 25",11, 340000, "tele.jpg",1)
-# catalogo.agregar_producto(2, "Notebook",11, 740000, "compu.jpg",1)
-# catalogo.agregar_producto(3, "Mouse tres botones",11, 3400, "mouse.jpg",1)
+catalogo.agregar_producto(1, "Televisor 25",11, 340000, "tele.jpg",1)
+catalogo.agregar_producto(2, "Notebook",11, 740000, "compu.jpg",1)
+catalogo.agregar_producto(3, "Mouse tres botones",11, 3400, "mouse.jpg",1)
 
 
 # Carpeta para guardar las imagenes.
-RUTA_DESTINO = './static/imagenes/'
+RUTA_DESTINO = './static/img/'
+
+@app.route('/inicio')
+def inicio():
+    return render_template('inicio.html')
+
+@app.route('/carrito')
+def carrito():
+    return render_template('carrito.html')
+
+@app.route('/dulces')
+def dulces():
+    return render_template('dulces.html')
+
+@app.route('/nosotros')
+def nosotros():
+    return render_template('nosotros.html')
+
+@app.route('/venta')
+def venta():
+    return render_template('venta.html')
 
 #--------------------------------------------------------------------
 @app.route("/productos", methods=["GET"])
@@ -163,19 +183,19 @@ def agregar_producto():
     cantidad = request.form['cantidad']
     precio = request.form['precio']
     proveedor = request.form['proveedor']  
-    #imagen = request.files['imagen']
+    imagen = request.files['imagen']
     nombre_imagen = ""
 
     # Me aseguro que el producto exista
     producto = catalogo.consultar_producto(codigo)
-    # if not producto: # Si no existe el producto...
-    #     # Genero el nombre de la imagen
-    #     nombre_imagen = secure_filename(imagen.filename)
-    #     nombre_base, extension = os.path.splitext(nombre_imagen)
-    #     nombre_imagen = f"{nombre_base}_{int(time.time())}{extension}"
+    if not producto: # Si no existe el producto...
+        # Genero el nombre de la imagen
+        nombre_imagen = secure_filename(imagen.filename)
+        nombre_base, extension = os.path.splitext(nombre_imagen)
+        nombre_imagen = f"{nombre_base}_{int(time.time())}{extension}"
 
     if catalogo.agregar_producto(codigo, descripcion, cantidad, precio, nombre_imagen, proveedor):
-        #imagen.save(os.path.join(RUTA_DESTINO, nombre_imagen))
+        imagen.save(os.path.join(RUTA_DESTINO, nombre_imagen))
         return jsonify({"mensaje": "Producto agregado"}), 201
     else:
         return jsonify({"mensaje": "Producto ya existe"}), 400
@@ -188,25 +208,25 @@ def modificar_producto(codigo):
     nueva_cantidad = request.form.get("cantidad")
     nuevo_precio = request.form.get("precio")
     nuevo_proveedor = request.form.get("proveedor")
-    #imagen = request.files['imagen']
+    imagen = request.files['imagen']
     nombre_imagen = ""
 
     # Procesamiento de la imagen
-    # nombre_imagen = secure_filename(imagen.filename)
-    # nombre_base, extension = os.path.splitext(nombre_imagen)
-    # nombre_imagen = f"{nombre_base}_{int(time.time())}{extension}"
-    # imagen.save(os.path.join(RUTA_DESTINO, nombre_imagen))
+    nombre_imagen = secure_filename(imagen.filename)
+    nombre_base, extension = os.path.splitext(nombre_imagen)
+    nombre_imagen = f"{nombre_base}_{int(time.time())}{extension}"
+    imagen.save(os.path.join(RUTA_DESTINO, nombre_imagen))
 
     # Busco el producto guardado
-    #producto = producto = catalogo.consultar_producto(codigo)
-    # if producto: # Si existe el producto...
-    #     imagen_vieja = producto["imagen_url"]
-    #     # Armo la ruta a la imagen
-    #     ruta_imagen = os.path.join(RUTA_DESTINO, imagen_vieja)
+    producto = producto = catalogo.consultar_producto(codigo)
+    if producto: # Si existe el producto...
+        imagen_vieja = producto["imagen_url"]
+        # Armo la ruta a la imagen
+        ruta_imagen = os.path.join(RUTA_DESTINO, imagen_vieja)
 
-    #     # Y si existe la borro.
-    #     if os.path.exists(ruta_imagen):
-    #         os.remove(ruta_imagen)
+        # Y si existe la borro.
+        if os.path.exists(ruta_imagen):
+            os.remove(ruta_imagen)
     
     if catalogo.modificar_producto(codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nombre_imagen, nuevo_proveedor):
         return jsonify({"mensaje": "Producto modificado"}), 200
@@ -218,15 +238,15 @@ def modificar_producto(codigo):
 @app.route("/productos/<int:codigo>", methods=["DELETE"])
 def eliminar_producto(codigo):
     # Busco el producto guardado
-    #producto = producto = catalogo.consultar_producto(codigo)
-    # if producto: # Si existe el producto...
-    #     imagen_vieja = producto["imagen_url"]
-    #     # Armo la ruta a la imagen
-    #     ruta_imagen = os.path.join(RUTA_DESTINO, imagen_vieja)
+    producto = producto = catalogo.consultar_producto(codigo)
+    if producto: # Si existe el producto...
+        imagen_vieja = producto["imagen_url"]
+        # Armo la ruta a la imagen
+        ruta_imagen = os.path.join(RUTA_DESTINO, imagen_vieja)
 
-    #     # Y si existe la borro.
-    #     if os.path.exists(ruta_imagen):
-    #         os.remove(ruta_imagen)
+        # Y si existe la borro.
+        if os.path.exists(ruta_imagen):
+            os.remove(ruta_imagen)
 
     # Luego, elimina el producto del catálogo
     if catalogo.eliminar_producto(codigo):
