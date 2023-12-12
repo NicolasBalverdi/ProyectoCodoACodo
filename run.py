@@ -72,8 +72,10 @@ def agregar_producto():
 # Ruta para ver detalles de un producto
 @app.route('/producto/<int:producto_id>')
 def ver_producto(producto_id):
+    print(producto_id) 
     cursor.execute('SELECT * FROM productos WHERE id = %s', (producto_id,))
     producto = cursor.fetchone()
+    print(producto) 
     return render_template('ver_producto.html', producto=producto)
 
 # Ruta para modificar un producto

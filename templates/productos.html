@@ -8,10 +8,11 @@
 </head>
 <body>
     <h1>Lista de Productos</h1>
+    
     <table>
         <thead>
             <tr>
-                <th>ID</th>
+                
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Acciones</th>
@@ -20,18 +21,40 @@
         <tbody>
             {% for producto in productos %}
                 <tr>
-                    <td>{{ producto['id'] }}</td>
+                    
                     <td>{{ producto['nombre'] }}</td>
                     <td>${{ producto['precio'] }}</td>
                     <td>
                         <a href="{{ url_for('ver_producto', producto_id=producto['id']) }}">Ver</a>
                         <a href="{{ url_for('modificar_producto', producto_id=producto['id']) }}">Modificar</a>
-                        <a href="{{ url_for('eliminar_producto', producto_id=producto['id']) }}">Eliminar</a>
+                        <a href="#" class="eliminar-producto" data-producto-id="{{ producto['id'] }}">Eliminar</a>
+                        
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
     <a href="{{ url_for('agregar_producto') }}">Agregar nuevo producto</a>
+
+    <script>
+        // Agrega un evento click a todos los enlaces con la clase 'eliminar-producto'
+        document.querySelectorAll('.eliminar-producto').forEach(function(enlace) {
+            enlace.addEventListener('click', function(event) {
+                // Previene el comportamiento predeterminado del enlace
+                event.preventDefault();
+    
+                // Obtiene el ID del producto desde el atributo 'data-producto-id'
+                var productoId = this.getAttribute('data-producto-id');
+    
+                // Muestra una ventana de confirmación al usuario
+                var confirmacion = confirm('¿Estás seguro de que deseas eliminar este producto?');
+    
+                // Si el usuario confirma, redirige a la ruta de eliminación
+                if (confirmacion) {
+                    window.location.href = "/eliminar/" + productoId;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
